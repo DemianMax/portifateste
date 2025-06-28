@@ -1,12 +1,10 @@
 // main.js
-// Modularized GSAP + ScrollTrigger animações para as seções
+// Modularizado, agora com fade/parallax entre seções
 
-// 1. Animação letra a letra da frase principal (INTRO)
 function animateIntroText() {
   const intro = document.querySelector('.intro-headline');
   const text = intro.textContent;
   intro.textContent = '';
-  // Cria um span para cada letra
   text.split('').forEach((char, i) => {
     const span = document.createElement('span');
     span.textContent = char;
@@ -14,7 +12,6 @@ function animateIntroText() {
     span.style.display = 'inline-block';
     intro.appendChild(span);
   });
-  // Animação GSAP: fade-in letra a letra
   gsap.to('.intro-headline span', {
     opacity: 1,
     y: 0,
@@ -25,9 +22,53 @@ function animateIntroText() {
   });
 }
 
-// 2. Animações de entrada via scroll + Parallax SVGs na Seção 2
+// Fade + Parallax entre seções (efeito de camadas)
+function animateSectionParallax() {
+  // Fade geral das seções, menos a primeira
+  document.querySelectorAll('.section:not(:first-child)').forEach((section, idx) => {
+    gsap.from(section, {
+      scrollTrigger: {
+        trigger: section,
+        start: "top 90%",
+        toggleActions: "play none none none"
+      },
+      opacity: 0,
+      y: 80,
+      duration: 1.2,
+      ease: "power3.out"
+    });
+  });
+}
+
+// Parallax dos backgrounds das seções 2 e 3 (camada ao fundo animando)
+function animateBackgroundParallax() {
+  // Seção 2 gradiente move levemente ao scroll
+  gsap.to('.secondary', {
+    scrollTrigger: {
+      trigger: '.secondary',
+      start: 'top bottom',
+      end: 'bottom top',
+      scrub: 1
+    },
+    backgroundPosition: "50% 80%",
+    ease: "none"
+  });
+  // Seção 3 gradiente move e clareia
+  gsap.to('.authority', {
+    scrollTrigger: {
+      trigger: '.authority',
+      start: 'top bottom',
+      end: 'bottom top',
+      scrub: 1
+    },
+    backgroundPosition: "50% 60%",
+    backgroundColor: "#273047",
+    ease: "none"
+  });
+}
+
+// Animações originais para elementos individuais
 function animateSecondary() {
-  // Fade-in da frase secundária
   gsap.from('.secondary-headline', {
     scrollTrigger: {
       trigger: '#secondary',
@@ -39,7 +80,6 @@ function animateSecondary() {
     ease: 'power2.out'
   });
 
-  // Parallax dos SVGs
   gsap.to('.parallax-back', {
     scrollTrigger: {
       trigger: '#secondary',
@@ -75,7 +115,6 @@ function animateSecondary() {
   });
 }
 
-// 3. Animação das colunas e SVGs na Seção 3
 function animateAuthority() {
   gsap.from('.authority-main', {
     scrollTrigger: {
@@ -98,7 +137,6 @@ function animateAuthority() {
     delay: 0.3,
     ease: 'power2.out'
   });
-  // Parallax SVGs
   gsap.to('.parallax-svga', {
     scrollTrigger: {
       trigger: '#authority',
@@ -134,7 +172,6 @@ function animateAuthority() {
   });
 }
 
-// 4. Animação dos cards de projetos
 function animateProjects() {
   gsap.from('.projects-transition h3', {
     scrollTrigger: {
@@ -159,7 +196,6 @@ function animateProjects() {
   });
 }
 
-// 5. Animação da CTA/Contato
 function animateContact() {
   gsap.from('.contact h2', {
     scrollTrigger: {
@@ -184,9 +220,10 @@ function animateContact() {
   });
 }
 
-// Inicializa todas as animações ao carregar a página
 window.addEventListener('DOMContentLoaded', () => {
   animateIntroText();
+  animateSectionParallax();     // efeito fade/parallax de camada
+  animateBackgroundParallax();  // fundo das seções move
   animateSecondary();
   animateAuthority();
   animateProjects();
