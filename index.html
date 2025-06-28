@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Portfólio UX – Projeto o Invisível</title>
+  <!-- Tipografia: Inter, Poppins ou Neue Haas Grotesk (Google Fonts fallback) -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+  <!-- GSAP & ScrollTrigger CDN -->
+  <script src="https://unpkg.com/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://unpkg.com/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <!-- CSS -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Seção 1: INTRO -->
+  <section class="intro section" id="intro">
+    <h1 class="intro-headline">UX é sobre fazer as perguntas certas.</h1>
+  </section>
+
+  <!-- Seção 2: FRASE SECUNDÁRIA + PARALLAX -->
+  <section class="secondary section" id="secondary">
+    <div class="parallax-container">
+      <!-- Elementos vetoriais abstratos para parallax -->
+      <svg class="parallax-svg parallax-back" width="240" height="120"><circle cx="120" cy="60" r="50" fill="#a3b8cc" opacity="0.18"/></svg>
+      <svg class="parallax-svg parallax-mid" width="120" height="80"><rect x="10" y="10" width="100" height="60" rx="20" fill="#6680a6" opacity="0.11"/></svg>
+      <svg class="parallax-svg parallax-front" width="60" height="60"><polygon points="30,10 55,55 5,55" fill="#fff" opacity="0.06"/></svg>
+    </div>
+    <h2 class="secondary-headline">Ou saber quando calar e observar.</h2>
+  </section>
+
+  <!-- Seção 3: AUTORIDADE -->
+  <section class="authority section" id="authority">
+    <div class="authority-content">
+      <div class="authority-text">
+        <p class="authority-main">Há 20 anos, projeto o invisível.</p>
+        <p class="authority-sub">Experiências digitais que conectam pessoas a soluções reais.</p>
+      </div>
+      <div class="authority-svg-group">
+        <!-- Elementos SVG simbólicos e paralaxe -->
+        <svg class="symbolic-svg parallax-svga" width="60" height="60"><circle cx="30" cy="30" r="28" fill="#b4d1c4" opacity="0.16"/></svg>
+        <svg class="symbolic-svg parallax-svgb" width="40" height="40"><rect x="5" y="5" width="30" height="30" fill="#e4b6a7" opacity="0.11"/></svg>
+        <svg class="symbolic-svg parallax-svgc" width="48" height="48"><polygon points="24,6 40,42 8,42" fill="#f6ea6e" opacity="0.09"/></svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- Seção 4: PROJETOS -->
+  <section class="projects section" id="projects">
+    <div class="projects-transition">
+      <h3>O que você não vê é o que transforma.</h3>
+    </div>
+    <div class="projects-grid">
+      <div class="project-card">
+        <img src="https://placehold.co/320x200/222/fff?text=Projeto+1" alt="Projeto 1">
+        <h4>Projeto Invisível</h4>
+        <p>Design de interface para app de saúde mental. Foco no não dito.</p>
+      </div>
+      <div class="project-card">
+        <img src="https://placehold.co/320x200/333/eee?text=Projeto+2" alt="Projeto 2">
+        <h4>Conectar Pessoas</h4>
+        <p>Plataforma colaborativa que une comunidades distantes.</p>
+      </div>
+      <div class="project-card">
+        <img src="https://placehold.co/320x200/555/fff?text=Projeto+3" alt="Projeto 3">
+        <h4>Fluxo Sutil</h4>
+        <p>Experiência digital para onboarding invisível e intuitivo.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Seção 5: CTA/Contato -->
+  <section class="contact section" id="contact">
+    <h2>Vamos conversar?</h2>
+    <a href="mailto:seuemail@exemplo.com" class="contact-btn">Entrar em contato</a>
+  </section>
+
+  <!-- JS -->
+  <script src="main.js"></script>
+</body>
+</html>
